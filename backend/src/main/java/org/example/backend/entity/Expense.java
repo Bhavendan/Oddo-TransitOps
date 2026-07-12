@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+
 public class Expense {
 
     @Id
@@ -29,7 +29,6 @@ public class Expense {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vehicle_id", nullable = false)
-    @JsonBackReference
     private Vehicle vehicle;
 
     @Enumerated(EnumType.STRING)

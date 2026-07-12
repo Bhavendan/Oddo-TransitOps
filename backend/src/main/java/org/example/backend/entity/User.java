@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+
 public class User {
 
     @Id
@@ -37,12 +37,12 @@ public class User {
     @Column(nullable = false, unique = true, length = 100)
     private String email;
 
-    @JsonIgnore
+
     @NotBlank(message = "Password is required")
     @Column(nullable = false)
     private String password;
 
-    @Builder.Default
+
     @Column(nullable = false)
     private Boolean enabled = true;
 

@@ -1,7 +1,7 @@
 package org.example.backend.entity;
 
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
@@ -25,7 +25,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+
 public class Driver {
 
     @Id
@@ -65,7 +65,7 @@ public class Driver {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
-    @Builder.Default
+
     private DriverStatus status = DriverStatus.AVAILABLE;
 
     @Column(nullable = false, updatable = false)
@@ -79,8 +79,8 @@ public class Driver {
        =========================== */
 
     @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    @Builder.Default
+    @JsonIgnore
+
     private List<Trip> trips = new ArrayList<>();
 
     @PrePersist

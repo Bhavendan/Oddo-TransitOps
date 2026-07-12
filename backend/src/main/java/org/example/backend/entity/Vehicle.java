@@ -2,6 +2,7 @@ package org.example.backend.entity;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
@@ -28,7 +29,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+
 public class Vehicle {
 
     @Id
@@ -68,7 +69,7 @@ public class Vehicle {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
-    @Builder.Default
+
     private VehicleStatus status = VehicleStatus.AVAILABLE;
 
     @Column(length = 100)
@@ -85,25 +86,24 @@ public class Vehicle {
        =========================== */
 
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    @Builder.Default
+    @JsonIgnore
+
     private List<Trip> trips = new ArrayList<>();
 
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    @Builder.Default
+    @JsonIgnore
+
     private List<MaintenanceLog> maintenanceLogs = new ArrayList<>();
 
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    @Builder.Default
+    @JsonIgnore
+
     private List<FuelLog> fuelLogs = new ArrayList<>();
 
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    @Builder.Default
-    private List<Expense> expenses = new ArrayList<>();
+    @JsonIgnore
 
+    private List<Expense> expenses = new ArrayList<>();
     @PrePersist
     public void prePersist() {
         createdAt = LocalDateTime.now();

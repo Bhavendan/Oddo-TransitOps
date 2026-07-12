@@ -21,7 +21,6 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class Trip {
 
     @Id
@@ -56,7 +55,7 @@ public class Trip {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
-    @Builder.Default
+
     private TripStatus status = TripStatus.DRAFT;
 
     private LocalDateTime dispatchTime;
@@ -67,12 +66,10 @@ public class Trip {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vehicle_id", nullable = false)
-    @JsonBackReference
     private Vehicle vehicle;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "driver_id", nullable = false)
-    @JsonBackReference
     private Driver driver;
 
     @Column(nullable = false, updatable = false)

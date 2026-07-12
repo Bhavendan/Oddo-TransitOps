@@ -1,7 +1,9 @@
 package org.example.backend.service;
 
 import lombok.RequiredArgsConstructor;
+import org.example.backend.entity.Role;
 import org.example.backend.entity.User;
+import org.example.backend.repository.RoleRepository;
 import org.example.backend.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -12,13 +14,20 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-
+    private final RoleRepository roleRepository;
     @Override
     public User saveUser(User user) {
 
         if (userRepository.existsByEmail(user.getEmail())) {
             throw new RuntimeException("Email already exists.");
         }
+
+        Role role = roleRepository.findById(
+                user.getRole().getRoleId()
+        ).orElseThrow(() ->
+                new RuntimeException("Role not found"));
+
+        user.setRole(role);
 
         return userRepository.save(user);
     }

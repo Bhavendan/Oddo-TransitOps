@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+
 public class MaintenanceLog {
 
     @Id
@@ -30,7 +30,6 @@ public class MaintenanceLog {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vehicle_id", nullable = false)
-    @JsonBackReference
     private Vehicle vehicle;
 
     @NotBlank(message = "Maintenance type is required")
@@ -57,7 +56,7 @@ public class MaintenanceLog {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
-    @Builder.Default
+
     private MaintenanceStatus status = MaintenanceStatus.ACTIVE;
 
     @Column(nullable = false, updatable = false)

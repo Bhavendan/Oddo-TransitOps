@@ -26,7 +26,6 @@ public class FuelLog {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vehicle_id", nullable = false)
-    @JsonBackReference
     private Vehicle vehicle;
 
     @NotNull(message = "Fuel date is required")

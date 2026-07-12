@@ -3,6 +3,7 @@ package org.example.backend.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 import org.example.backend.enums.RoleName;
@@ -17,7 +18,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Role {
 
     @Id
@@ -36,7 +38,7 @@ public class Role {
 
     @JsonIgnore
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
-    @Builder.Default
+
     private List<User> users = new ArrayList<>();
 
     @PrePersist
