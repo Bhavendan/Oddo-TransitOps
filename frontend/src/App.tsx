@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom"
 import MainLayout from "@/components/MainLayout"
 import PlaceholderPage from "@/components/PlaceholderPage"
+import DashboardPage from "@/components/dashboard/DashboardPage"
+import VehiclesPage from "@/components/vehicles/VehiclesPage"
 import { UserProvider, type CurrentUser } from "@/lib/user"
 
 // In a real app this would come from an auth session.
@@ -30,19 +32,17 @@ export default function App() {
         <Route
           path="/"
           element={
-            <Page
-              title="Dashboard"
-              description="Overview of fleet health, active trips, and key operational metrics."
-            />
+            <MainLayout bare onLogout={() => console.log("[v0] logout clicked")}>
+              <DashboardPage />
+            </MainLayout>
           }
         />
         <Route
           path="/vehicles"
           element={
-            <Page
-              title="Vehicles"
-              description="Manage your fleet's vehicles, statuses, and assignments."
-            />
+            <MainLayout bare onLogout={() => console.log("[v0] logout clicked")}>
+              <VehiclesPage />
+            </MainLayout>
           }
         />
         <Route

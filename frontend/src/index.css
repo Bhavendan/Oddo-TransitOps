@@ -31,6 +31,13 @@
   --color-role-driver: oklch(0.6 0.14 160);
   --color-role-safety: oklch(0.68 0.16 55);
   --color-role-finance: oklch(0.58 0.15 300);
+
+  /* Status accents (shared by vehicles + trips) */
+  --color-status-green: oklch(0.62 0.16 150);
+  --color-status-blue: oklch(0.55 0.16 255);
+  --color-status-orange: oklch(0.68 0.16 55);
+  --color-status-gray: oklch(0.6 0.02 260);
+  --color-status-red: oklch(0.58 0.2 25);
 }
 
 * {

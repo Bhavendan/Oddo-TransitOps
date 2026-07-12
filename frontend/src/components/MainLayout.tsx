@@ -9,12 +9,19 @@ interface MainLayoutProps {
   /** Optional explicit title; falls back to the nav label for the current path. */
   title?: string
   onLogout?: () => void
+  /**
+   * When true, renders children directly on the gray background instead of
+   * inside the default white card. Use for pages that supply their own cards
+   * (e.g. the dashboard grid).
+   */
+  bare?: boolean
 }
 
 export default function MainLayout({
   children,
   title,
   onLogout,
+  bare = false,
 }: MainLayoutProps) {
   const { pathname } = useLocation()
   const pageTitle = title ?? PAGE_TITLES[pathname] ?? "TransitOps"
@@ -27,9 +34,13 @@ export default function MainLayout({
         <Header title={pageTitle} />
 
         <main className="flex-1 overflow-y-auto p-4 md:p-6">
-          <div className="rounded-xl border border-border bg-card p-5 shadow-sm md:p-6">
-            {children}
-          </div>
+          {bare ? (
+            children
+          ) : (
+            <div className="rounded-xl border border-border bg-card p-5 shadow-sm md:p-6">
+              {children}
+            </div>
+          )}
         </main>
       </div>
     </div>
