@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: oklch(0.97 0.005 250);
+  --color-foreground: oklch(0.22 0.02 260);
+
+  --color-card: oklch(1 0 0);
+  --color-card-foreground: oklch(0.22 0.02 260);
+
+  --color-muted: oklch(0.95 0.01 250);
+  --color-muted-foreground: oklch(0.52 0.02 260);
+
+  --color-border: oklch(0.9 0.01 250);
+
+  /* Brand: dark navy blue */
+  --color-primary: oklch(0.45 0.13 255);
+  --color-primary-foreground: oklch(0.99 0 0);
+
+  /* Sidebar (dark blue) */
+  --color-sidebar: oklch(0.28 0.06 260);
+  --color-sidebar-foreground: oklch(0.92 0.01 250);
+  --color-sidebar-muted: oklch(0.7 0.03 260);
+  --color-sidebar-active: oklch(0.45 0.13 255);
+  --color-sidebar-hover: oklch(0.33 0.07 260);
+  --color-sidebar-border: oklch(0.38 0.05 260);
+
+  /* Role pill accents */
+  --color-role-fleet: oklch(0.55 0.15 255);
+  --color-role-driver: oklch(0.6 0.14 160);
+  --color-role-safety: oklch(0.68 0.16 55);
+  --color-role-finance: oklch(0.58 0.15 300);
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
